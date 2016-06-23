@@ -1,0 +1,281 @@
+<?xml version="1.0"?>
+<RGEntityTypes>
+  
+  <RGEntityType name="DEFAULT">
+    <Label>Results</Label>
+    <Style singular="result" plural="results"/>
+  </RGEntityType>
+
+  <RGEntityType name="COMPOUNDS">
+    <Label>Compounds</Label>
+    <ServiceInputCategory name="AMGEN_ROOT_ID">
+      <RegExPattern><![CDATA[[0-9]+]]></RegExPattern>
+    </ServiceInputCategory>
+    <ServiceInputCategory name="AMGEN_COMPOUND_ID"/>
+    <ServiceInputCategory name="AMGEN_IDENTIFIER"/>
+    <Style singular="compound" plural="compounds"/>
+  </RGEntityType>
+  <RGEntityType name="SUBSTANCES">
+    <Label>Substances</Label>
+    <ServiceInputCategory name="AMGEN_NAME">
+      <RegExPattern><![CDATA[[0-9]+#[0-9]+]]>
+      </RegExPattern>
+    </ServiceInputCategory>
+    <ServiceInputCategory name="AMGEN_SUBSTANCE_ID"/>
+    <Style singular="substance" plural="substances"/>
+  </RGEntityType>
+  <RGEntityType name="SMR_STRUCTURES">
+    <Label>SMR Structures</Label>
+    <ServiceInputCategory name="SMR_STRUCTURE_ID"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="SMR_MOLECULES">
+    <Label>SMR Molecules</Label>
+    <ServiceInputCategory name="SMR_MOLECULE_ID"/>
+    <Style singular="molecule" plural="molecules"/>
+  </RGEntityType>
+  <RGEntityType name="SMR_COMPONENTS">
+    <Label>SMR Components</Label>
+    <ServiceInputCategory name="SMR_COMPONENT_ID"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="LM_COMPOUNDS">
+    <Label>LM Compounds</Label>
+    <ServiceInputCategory name="AMGEN_LM_ROOT_ID"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="LM_SUBSTANCES">
+    <Label>LM Substances</Label>
+    <ServiceInputCategory name="AMGEN_LM_SUBSTANCE_ID"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="LMR_EXPRESSION_SYSTEMS">
+    <Label>LMR Expression Systems</Label>
+    <ServiceInputCategory name="LMR_EXPR_SYSTEM_ID"/>
+    <Style singular="lmrExpSys" plural="lmrExpSys"/>
+  </RGEntityType>
+  <RGEntityType name="LMR_PROTEIN_LOTS">
+    <Label>LMR Protein Lots</Label>
+    <ServiceInputCategory name="LMR_PROTEIN_LOT_ID"/>
+    <Style singular="lmrProtLot" plural="lmrProtLot"/>
+  </RGEntityType>  
+  <RGEntityType name="AMGEN_GENES">
+    <Label>Genes</Label>
+    <ServiceInputCategory name="AMGEN_GENE_IDENTIFIER">
+      <RegExPattern><![CDATA[[\p{Graph}]{3,}]]>
+      </RegExPattern>
+    </ServiceInputCategory>
+    <Style singular="gene" plural="genes"/>
+  </RGEntityType>
+  <RGEntityType name="GENES">
+    <Label>Genes</Label>
+    <ServiceInputCategory name="ENTREZGENE_IDENTIFIER"/>
+    <Style singular="gene" plural="genes"/>
+  </RGEntityType>
+  <RGEntityType name="ASSAYS">
+    <Label>Assays</Label>
+    <ServiceInputCategory name="ASSAY_IDENTIFIER">
+      <RegExPattern><![CDATA[(AA){0,1}[0-9]+]]>
+      </RegExPattern>
+    </ServiceInputCategory>
+    <Style singular="assay" plural="assays"/>
+  </RGEntityType>
+  <RGEntityType name="LOGICAL_ASSAYS">
+    <Label>Logical Assays</Label>
+    <ServiceInputCategory name="LOGICAL_ASSAY_IDENTIFIER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="EXPERIMENTS">
+    <Label>Experiments</Label>
+    <ServiceInputCategory name="EXPERIMENT_IDENTIFIER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="STUDIES">
+    <Label>Studies</Label>
+    <ServiceInputCategory name="STUDY_IDENTIFIER"/>
+    <Style singular="study" plural="studies"/>
+  </RGEntityType>
+  <RGEntityType name="WATSON_STUDIES">
+    <Label>Watson Studies</Label>
+    <ServiceInputCategory name="WATSON_STUDY_IDENTIFIER">
+      <RegExPattern><![CDATA[[\p{Graph}]{3,}]]>
+      </RegExPattern>
+    </ServiceInputCategory>
+    <Style singular="study" plural="studies"/>
+  </RGEntityType>
+  <RGEntityType name="WATSON_PK_STUDIES">
+    <Label>Watson PK Studies</Label>
+    <ServiceInputCategory name="WATSON_PK_STUDY_IDENTIFIER"/>
+    <Style singular="study" plural="studies"/>
+  </RGEntityType>
+  <RGEntityType name="WATSON_TK_STUDIES">
+    <Label>Watson TK Studies</Label>
+    <ServiceInputCategory name="WATSON_TK_STUDY_IDENTIFIER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="WATSON_PD_STUDIES">
+    <Label>Watson PD Studies</Label>
+    <ServiceInputCategory name="WATSON_PD_STUDY_IDENTIFIER"/>
+    <Style singular="study" plural="studies"/>
+  </RGEntityType>
+  <RGEntityType name="SQUID_NUCLEOTIDE_SEQUENCES">
+    <Label>Nucleotide Sequences</Label>
+    <ServiceInputCategory name="SQUID_NUCLEOTIDE_SEQUENCE_IDENTIFIER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="SQUID_PROTEIN_SEQUENCES">
+    <Label>Protein Sequences</Label>
+    <ServiceInputCategory name="SQUID_PROTEIN_SEQUENCE_IDENTIFIER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="NUCLEOTIDE_ACCESSION_NUMBERS">
+    <Label>Nucleotide Accessions</Label>
+    <ServiceInputCategory name="NUCLEOTIDE_ACCESSION_NUMBER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="PROTEIN_ACCESSION_NUMBERS">
+    <Label>Protein Accessions</Label>
+    <ServiceInputCategory name="PROTEIN_ACCESSION_NUMBER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="GALILEO_STUDIES">
+    <Label>Galileo Studies</Label>
+    <ServiceInputCategory name="GALILEO_STUDY_IDENTIFIER">
+      <RegExPattern><![CDATA[[\p{Graph}]{3,}]]>
+      </RegExPattern>
+    </ServiceInputCategory>
+    <Style singular="study" plural="studies"/>
+  </RGEntityType>
+  <RGEntityType name="PLATES">
+    <Label>Mosaic Plates</Label>
+    <ServiceInputCategory name="PLATE_IDENTIFIER"/>
+    <Style singular="mosaicplate" plural="mosaicplates"/>
+  </RGEntityType>
+  <RGEntityType name="MOSAIC_PLATES">
+    <Label>Mosaic Plates</Label>
+    <ServiceInputCategory name="MOSAIC_BARCODE"/>
+    <Style singular="mosaicplate" plural="mosaicplates"/>
+  </RGEntityType>
+  <RGEntityType name="PROJECTS">
+    <Label>Projects</Label>
+    <ServiceInputCategory name="PROJECT">
+      <RegExPattern><![CDATA[[\p{Graph}]*[\p{Alpha}]+[\p{Graph}]*]]>
+      </RegExPattern>
+    </ServiceInputCategory>
+    <Style singular="project" plural="projects"/>
+  </RGEntityType>
+  <RGEntityType name="PEOPLE">
+    <Label>People</Label>
+    <ServiceInputCategory name="AMGEN_LOGIN"/>
+    <Style singular="person" plural="people"/>
+  </RGEntityType>
+  <RGEntityType name="NOTEBOOKS">
+    <Label>Notebooks</Label>
+    <ServiceInputCategory name="NOTEBOOK_IDENTIFIER"/>
+    <Style singular="notebook" plural="notebooks"/>
+  </RGEntityType>
+  <RGEntityType name="DOCUMENTS">
+    <Label>Documents</Label>
+    <ServiceInputCategory name="DOCUMENT"/>
+    <Style singular="document" plural="documents"/>
+  </RGEntityType>
+  <RGEntityType name="FOLDERS">
+    <Label>Folders</Label>
+    <ServiceInputCategory name="FOLDER"/>
+    <Style singular="folder" plural="folders"/>
+  </RGEntityType>
+  <RGEntityType name="ASSAY_TYPES">
+    <Label>Assay Types</Label>
+    <ServiceInputCategory name="ASSAY_TYPE"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="LOGICAL_ASSAY_TYPES">
+    <Label>Logical Assay Types</Label>
+    <ServiceInputCategory name="LOGICAL_ASSAY_TYPE"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="DATES">
+    <Label>Dates</Label>
+    <ServiceInputCategory name="DATE"/>
+    <ServiceInputCategory name="DATE_RANGE"/>
+    <Style singular="date" plural="dates"/>
+  </RGEntityType>
+  <RGEntityType name="DATA_ANALYSES">
+    <Label>Data Analyses</Label>
+    <ServiceInputCategory name="DATA_ANALYSIS"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="CAST_EXPERIMENTS">
+    <Label>CAST Experiments</Label>
+    <ServiceInputCategory name="CAST_EXPERIMENT_IDENTIFIER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="SECRETED_PROTEINS">
+    <Label>Secreted Proteins</Label>
+    <ServiceInputCategory name="SECRETED_PROTEIN_IDENTIFIER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="CONSTRUCTS">
+    <Label>Constructs</Label>
+    <ServiceInputCategory name="CONSTRUCT_IDENTIFIER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="CONSTRUCT_LOTS">
+    <Label>Construct Lots</Label>
+    <ServiceInputCategory name="CONSTRUCT_LOT_IDENTIFIER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="CONSTRUCT_STUDIES">
+    <Label>Construct Studies</Label>
+    <ServiceInputCategory name="CONSTRUCT_STUDY_IDENTIFIER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="CELL_CULTURE_RUNS">
+    <Label>Cell Culture Runs</Label>
+    <ServiceInputCategory name="CELL_CULTURE_RUN_IDENTIFIER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  <RGEntityType name="ARRAY_SERVER_PROJECTS">
+    <Label>Array Server Projects</Label>
+    <ServiceInputCategory name="ARRAY_SERVER_PROJECT_IDENTIFIER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+
+  <RGEntityType name="PATHWAYS">
+    <Label>Pathways</Label>
+    <ServiceInputCategory name="PATHWAY_IDENTIFIER"/>
+    <Style singular="pathway" plural="pathways"/>
+  </RGEntityType>
+  
+
+  <RGEntityType name="AMGEN_DRUG_TARGETS">
+    <Label>Amgen Drug Targets</Label>
+    <ServiceInputCategory name="AMGEN_DRUG_TARGET_IDENTIFIER"/>
+    <Style singular="drugTarget" plural="drugTargets"/>
+  </RGEntityType>
+  
+  <RGEntityType name="AMES_MUTAGENIC_RESULTS">
+    <Label>AMES Mutagenic Results</Label>
+    <ServiceInputCategory name="AMES_MUTAGENIC_RESULT"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  
+  <RGEntityType name="OMICS_PROJECTS">
+    <Label>Omics Projects</Label>
+    <ServiceInputCategory name="OMICS_PROJECT_IDENTIFIER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  
+  <RGEntityType name="OMICS_SAMPLESETS">
+    <Label>Omics SampleSets</Label>
+    <ServiceInputCategory name="OMICS_SAMPLESET_IDENTIFIER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  
+  <RGEntityType name="OMICS_SAMPLES">
+    <Label>Omics Sample</Label>
+    <ServiceInputCategory name="OMICS_SAMPLE_IDENTIFIER"/>
+    <Style singular="" plural=""/>
+  </RGEntityType>
+  
+</RGEntityTypes>

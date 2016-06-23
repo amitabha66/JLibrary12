@@ -1,0 +1,265 @@
+package amgen.ri.stat;
+
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
+public class ExtMath {
+
+    /**
+     * Calculates the Nth percentile of a set of numbers
+     */
+    public static double percentile(double[] values, int percentile) {
+        if (values == null || values.length == 0) {
+            return Double.NaN;
+        }
+        Arrays.sort(values);
+        double percent = ( (double) percentile) / 100;
+        double n1 = percent * (values.length - 1) + 1;
+        double truncate = (int) n1;
+        double frac = n1 - truncate;
+
+        int idx1 = Math.min( (int) truncate - 1, values.length - 1);
+        int idx2 = Math.min( (int) truncate, values.length - 1);
+        double ak = values[idx1];
+        double ak1 = values[idx2];
+        return ak + frac * (ak1 - ak);
+    }
+
+    /**
+     * Calculates the median of a set of numbers- ie. the 50th percentile.
+     * Same as percentile(values, 50).
+     */
+    public static double median(double[] values) {
+        return percentile(values, 50);
+    }
+
+    /**
+     * Calculates the arithmetic mean of a set of numbers
+     */
+    public static double mean(double[] values) {
+        double mean = 0;
+        double n = (double) values.length;
+        for (int i = 0; i < values.length; i++) {
+            mean += values[i] / n;
+        }
+        return mean;
+    }
+
+    /**
+     * Calculates the arithmetic mean of a set of numbers
+     */
+    public static double mean(List<Number> values) {
+        double mean = 0;
+        double n = (double) values.size();
+        for (Number value : values) {
+            mean += value.doubleValue() / n;
+        }
+        return mean;
+    }
+
+    /**
+     * Calculates the variance of a set of numbers
+     */
+    public static double variance(double[] values) {
+        double vari = 0;
+        double avg = mean(values);
+        for (int i = 0; i < values.length; i++) {
+            vari = vari + (avg - values[i]) * (avg - values[i]);
+        }
+        return vari / (values.length - 1);
+    }
+
+    /**
+     * Calculates the variance of a set of numbers
+     */
+    public static double variance(List<Number> values) {
+        double vari = 0;
+        double avg = mean(values);
+        for (Number value : values) {
+            vari = vari + (avg - value.doubleValue()) * (avg - value.doubleValue());
+        }
+        return vari / (values.size() - 1);
+    }
+    /**
+     * Calculates the standard devation of a set of numbers
+     */
+    public static double standardDevation(double[] values) {
+        double variance= variance(values);
+        if (variance<0) {
+            return Double.NaN;
+        }
+        return Math.sqrt(variance);
+    }
+
+    /**
+     * Calculates the standard devation of a set of numbers
+     */
+    public static double standardDevation(List<Number> values) {
+        double variance= variance(values);
+        if (variance<0) {
+            return Double.NaN;
+        }
+        return Math.sqrt(variance);
+    }
+    /**
+     * Calculates the harmonic mean of a set of numbers
+     */
+    public static double harmonicMean(double[] values) {
+        double recsum = 0;
+        double n = (double) values.length;
+        for (int i = 0; i < values.length; i++) {
+            recsum += 1 / values[i];
+        }
+        return n / recsum;
+    }
+
+    /**
+     * Calculates the harmonic mean of a set of numbers
+     */
+    public static double harmonicMean(List<Number> values) {
+        double recsum = 0;
+        double n = (double) values.size();
+        for (Number value : values) {
+            recsum += 1 / value.doubleValue();
+        }
+        return n / recsum;
+    }
+
+    /**
+     * Calculates the geometric mean of a set of numbers
+     */
+    public static double geometricMean(double[] values) {
+        double prod = 1;
+        double n = (double) values.length;
+        for (int i = 0; i < values.length; i++) {
+            prod *= values[i];
+        }
+        return Math.pow(prod, 1 / n);
+    }
+
+    /**
+     * Calculates the geometric mean of a set of numbers
+     */
+    public static double geometricMean(List<Number> values) {
+        double prod = 1;
+        double n = (double) values.size();
+        for (Number value : values) {
+            prod *= value.doubleValue();
+        }
+        return Math.pow(prod, 1 / n);
+    }
+
+    /**
+     * Returns the minimum value in a set of numbers
+     */
+    public static double min(double[] values) {
+        if (values == null || values.length == 0) {
+            return Double.NaN;
+        }
+        Arrays.sort(values);
+        return values[0];
+    }
+
+    /**
+     * Returns the maximum value in a set of numbers
+     */
+    public static double max(double[] values) {
+        if (values == null || values.length == 0) {
+            return Double.NaN;
+        }
+        Arrays.sort(values);
+        return values[values.length - 1];
+    }
+
+    /**
+     * Returns the log base n of a value
+     */
+    public static double logN(double value, double n) {
+        return Math.log(value) / Math.log(n);
+    }
+
+    /**
+     * Returns the log base 10 of a value.
+     * Same as logN(value, 10)
+     */
+    public static double log10(double value) {
+        return logN(value, 10);
+    }
+
+    /**
+     * ln Gamma function
+     * Reference: "Lanczos, C. 'A precision approximation of the gamma function',
+     * J. SIAM Numer. Anal., B, 1, 86-96, 1964."
+     * Translation of  Alan Miller's FORTRAN-implementation See http://lib.stat.cmu.edu/apstat/245
+     * @param z
+     * @return
+     */
+    public static double lngamm(double z) {
+        double x = 0;
+        x += 0.1659470187408462e-06 / (z + 7);
+        x += 0.9934937113930748e-05 / (z + 6);
+        x -= 0.1385710331296526 / (z + 5);
+        x += 12.50734324009056 / (z + 4);
+        x -= 176.6150291498386 / (z + 3);
+        x += 771.3234287757674 / (z + 2);
+        x -= 1259.139216722289 / (z + 1);
+        x += 676.5203681218835 / (z);
+        x += 0.9999999999995183;
+        return (Math.log(x) - 5.58106146679532777 - z + (z - 0.5) * Math.log(z + 6.5));
+    }
+
+    /**
+     * Factorial
+     * @param n
+     * @return
+     */
+    public static double lnfact(double n) {
+        if (n <= 1) {
+            return 0;
+        }
+        return (lngamm(n + 1));
+    }
+
+    /**
+     * Binomial coefficient
+     * @param n
+     * @param k
+     * @return
+     */
+    public static double lnbico(double n, double k) {
+        return (lnfact(n) - lnfact(k) - lnfact(n - k));
+    }
+
+    /**
+     * Returns the t- score for an independent t-test.
+     * The returned value can be compared to t-distribution to determine significance
+     * @param a double[]
+     * @param b double[]
+     * @return double
+     */
+    public static double tScore(double[] a, double b[]) {
+        double avgA = mean(a);
+        double avgB = mean(b);
+        double varA = variance(a);
+        double varB = variance(b);
+
+        return (avgA - avgB) / (Math.sqrt( ( (a.length - 1) * varA + (b.length - 1) * varB) / (a.length + b.length - 2))
+                                * Math.sqrt( (1.0 / a.length + 1.0 / b.length)));
+
+    }
+
+    public static void main(String[] args) {
+        double[] list = {
+            1.10, 1.20, 0.85};
+        double[] list2 = {
+            1.10, 1.20, 1};
+        System.out.println(percentile(list, 50));
+        System.out.println(mean(list));
+        System.out.println(harmonicMean(list));
+        System.out.println(geometricMean(list));
+        System.out.println(tScore(list, list2));
+        System.out.println(new Date());
+    }
+
+}

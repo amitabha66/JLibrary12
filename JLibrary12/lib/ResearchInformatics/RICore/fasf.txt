@@ -1,0 +1,16 @@
+  <filter>
+    <filter-name>FASFFilter</filter-name>
+    <filter-class>amgen.ri.servlet.FederatedAccessSecurityFilter</filter-class>
+    <init-param>
+      <param-name>FASF_AUTHENTICATOR_URL</param-name>
+      <param-value>http://ussf-papp-dweb1.amgen.com/cgi-bin/fasf/fasf.pl</param-value>
+    </init-param>
+    <init-param>
+      <param-name>FASF_COOKIE_EXPIRES</param-name>
+      <param-value>1800</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>FASFFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
